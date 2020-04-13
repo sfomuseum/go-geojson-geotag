@@ -24,8 +24,6 @@ type GeotagLineString struct {
 	Coordinates [2]GeotagCoordinate `json:"coordinates"`
 }
 
-type GeotagRing []GeotagCoordinate
-
 type GeotagPolygon struct {
 	Type        string             `json:"type"`
 	Coordinates [][]GeotagCoordinate `json:"coordinates"`

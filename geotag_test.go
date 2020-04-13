@@ -1,8 +1,8 @@
 package geotag
 
 import (
-	"encoding/json"
 	"crypto/sha256"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -80,12 +80,20 @@ func TestParseGeotagFeature(t *testing.T) {
 		t.Fatal("Invalid field of view length")
 	}
 
+	/*
+		trg, err := feature.Target()
+
+		if err != nil {
+			t.Fatal(err)
+		}
+	*/
+
 	fov_feature := FieldOfViewFeature{
-		Type: "Feature",
+		Type:       "Feature",
 		Properties: feature.Properties,
-		Geometry: fov,
+		Geometry:   fov,
 	}
-	
+
 	enc, err := json.Marshal(fov_feature)
 
 	if err != nil {
@@ -95,7 +103,7 @@ func TestParseGeotagFeature(t *testing.T) {
 	hash := sha256.Sum256(enc)
 	hash_str := fmt.Sprintf("%x", hash[:])
 
-	if hash_str != "67f9a804bb0c2946905219bc9cfca0f3fa7ffeb78d10f168ea53783db4f393f8"{
+	if hash_str != "67f9a804bb0c2946905219bc9cfca0f3fa7ffeb78d10f168ea53783db4f393f8" {
 		t.Fatal("Invalid field of view feature hash")
 	}
 }

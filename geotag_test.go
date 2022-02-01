@@ -9,6 +9,12 @@ import (
 	"testing"
 )
 
+type FieldOfViewFeature struct {
+	Type       string           `json:"type"`
+	Geometry   *GeotagPolygon   `json:"geometry"`
+	Properties GeotagProperties `json:"properties"`
+}
+
 func TestParseGeotagFeature(t *testing.T) {
 
 	cwd, err := os.Getwd()

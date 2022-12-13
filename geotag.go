@@ -7,6 +7,7 @@ import (
 	"io"
 )
 
+// CameraProperties is a struct containing Who's On First pointers for the point where the "camera" is located.
 type CameraProperties struct {
 	// The ID of the Who's On First (WOF) feature that immediately parents the point where the "camera" is located.
 	ParentId int64 `json:"wof:parent_id,omitempty"`
@@ -14,6 +15,7 @@ type CameraProperties struct {
 	Hierarchy []map[string]int64 `json:"wof:hierarchy,omitempty"`
 }
 
+// TargetProperties is a struct containing Who's On First pointers for the point where the "camera" is pointed.
 type TargetProperties struct {
 	// The ID of the Who's On First (WOF) feature that immediately parents the point targeted by the "camera".
 	ParentId int64 `json:"wof:parent_id,omitempty"`
@@ -29,9 +31,11 @@ type GeotagProperties struct {
 	// The bearing for camera
 	Bearing float64 `json:"geotag:bearing"`
 	// The distance from the camera to the center point of the field of view's edges.
-	Distance float64           `json:"geotag:distance"`
-	Camera   *CameraProperties `json:"geotag:camera"`
-	Target   *TargetProperties `json:"geotag:target"`
+	Distance float64 `json:"geotag:distance"`
+	// Camera is a `CameraProperties` instance containing Who's On First pointers for the point where the "camera" is located.
+	Camera *CameraProperties `json:"geotag:camera"`
+	// Target is a `TargetProperties` instance containing Who's On First pointers for the point where the "camera" is pointed.
+	Target *TargetProperties `json:"geotag:target"`
 }
 
 // GeotagCoordinate defines a longitude, latitude coorindate.

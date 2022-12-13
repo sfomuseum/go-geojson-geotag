@@ -1,5 +1,5 @@
-// fov is a command-line tool that read a "geotag" GeoJSON Feature on SDTIN and outputs its
-// "field of view area as a GeoJSON geometry element.
+// pov is a command-line tool that read a "geotag" GeoJSON Feature on SDTIN and outputs its
+// camera's "point of view area as a GeoJSON geometry element.
 package main
 
 import (
@@ -24,7 +24,7 @@ func main() {
 		log.Fatalf("Failed to create geotag feature, %v", err)
 	}
 
-	fov, err := f.FieldOfView()
+	fov, err := f.PointOfView()
 
 	if err != nil {
 		log.Fatalf("Failed to derive field of view from geotag feature, %v", err)

@@ -1,9 +1,9 @@
 {
   "type": "Feature",
   "properties": {
-    "angle": 47.07429297481667,
-    "bearing": -138.66623953906995,
-    "distance": 5085.699614077739
+    "geotag:angle": 47.07429297481667,
+    "geotag:bearing": -138.66623953906995,
+    "geotag:distance": 5085.699614077739
   },
   "geometry": {
     "type": "GeometryCollection",

@@ -29,7 +29,7 @@ func TestParseGeotagFeature(t *testing.T) {
 	feature_fh, err := os.Open(feature_path)
 
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("Failed to open %s, %v", feature_path, err)
 	}
 
 	defer feature_fh.Close()
@@ -37,13 +37,13 @@ func TestParseGeotagFeature(t *testing.T) {
 	feature, err := NewGeotagFeatureWithReader(feature_fh)
 
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("Failed to read %s, %v", feature_path, err)
 	}
 
 	pov, err := feature.PointOfView()
 
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("Failed to derive point of view for %s, %v", feature_path, err)
 	}
 
 	if pov.Coordinates[0] != -122.37499034916583 {
@@ -109,7 +109,7 @@ func TestParseGeotagFeature(t *testing.T) {
 	hash := sha256.Sum256(enc)
 	hash_str := fmt.Sprintf("%x", hash[:])
 
-	if hash_str != "67f9a804bb0c2946905219bc9cfca0f3fa7ffeb78d10f168ea53783db4f393f8" {
-		t.Fatal("Invalid field of view feature hash")
+	if hash_str != "0b7977bf21407a44034f81817d73bd8fbe67ab8ed4780399f51e1d41f725f676" {
+		t.Fatalf("Invalid field of view feature hash, %s", hash_str)
 	}
 }
